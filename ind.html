@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+  <title>Pixcl Labs Logo</title>
+  <style>
+    body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.logo {
+  display: flex;
+  flex-wrap: wrap;
+  font-family: Arial, sans-serif;
+  font-size: 60px;
+  color: #333;
+}
+
+.letter {
+  padding: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.letter:hover {
+  transform: scale(1.2);
+  color: #00aaff;
+}
+  </style>
+</head>
+<body>
+  <div class="logo">
+    <div class="letter p">P</div>
+    <div class="letter i">i</div>
+    <div class="letter x">x</div>
+    <div class="letter c">c</div>
+    <div class="letter l">l</div>
+    <div class="letter labs">Labs</div>
+  </div>
+</body>
+<script>
+    document.addEventListener('mousemove', (event) => {
+  const mouseX = event.clientX;
+  const mouseY = event.clientY;
+
+  const logo = document.querySelector('.logo');
+  const logoRect = logo.getBoundingClientRect();
+
+  const logoCenterX = logoRect.left + logoRect.width / 2;
+  const logoCenterY = logoRect.top + logoRect.height / 2;
+
+  const dx = mouseX - logoCenterX;
+  const dy = mouseY - logoCenterY;
+
+  const letters = document.querySelectorAll('.letter');
+  letters.forEach((letter) => {
+    const speed = letter.getAttribute('data-speed');
+    const translateX = dx * speed;
+    const translateY = dy * speed;
+    letter.style.transform = `translate(${translateX}px, ${translateY}px)`;
+  });
+});
+
+
+
+
+
+</script>
+</html>
